@@ -10,7 +10,8 @@ export default async function Home({
   // convert to number
   const currentPage = parseInt(page);
 
-  const pageSize = 4;
+  // max products per page
+  const pageSize = 6;
 
   // total number of products in database
   const totalItemCount = await prisma.product.count();
@@ -20,7 +21,7 @@ export default async function Home({
 
   const products = await prisma.product.findMany({
     orderBy: {
-      id: "desc",
+      id: "desc", // descending order
     },
     skip: (currentPage - 1) * pageSize,
     take: pageSize,
@@ -28,7 +29,6 @@ export default async function Home({
 
   const isEmpty = !products || products.length < 1 || !Array.isArray(products);
 
-  // add products in db
   return (
     <>
       <div className="m-10 flex items-center justify-center flex-wrap">

@@ -21,3 +21,9 @@ export interface HomeProps {
     page: string;
   };
 }
+
+export interface SearchProductParams {
+  params: {
+    query: string;
+  };
+}

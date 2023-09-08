@@ -6,6 +6,13 @@ export async function POST(request: Request) {
   // parse the body
   const data = await request.json();
 
+  if (!data) {
+    return NextResponse.json({
+      message: "Product could not be created",
+      status: 404,
+    });
+  }
+
   // make a new product in database
   await prisma.product.create({
     data: data,

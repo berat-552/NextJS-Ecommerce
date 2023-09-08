@@ -9,10 +9,10 @@ export interface ProductCardProps {
 }
 
 export default function ProductCard({ product }: ProductCardProps) {
-  // new if less than 7 days old
+  // new if createdAt is less than 7 days old
   const isNew =
     Date.now() - new Date(product.createdAt).getTime() <
-    1000 * 60 * 60 * 24 * 7;
+    1000 * 60 * 60 * 24 * 5;
 
   return (
     <Link
@@ -26,6 +26,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           width={800}
           height={400}
           className="object-cover h-48"
+          priority
         />
       </figure>
       <div className="card-body">

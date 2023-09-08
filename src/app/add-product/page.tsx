@@ -39,12 +39,6 @@ export default function AddProduct() {
     });
 
     push("/");
-
-    // if (response.ok) {
-    //   console.log(response);
-    // } else {
-    //   console.log("error");
-    // }
   }
 
   return (
@@ -52,22 +46,22 @@ export default function AddProduct() {
       <h1 className="text-xl mb-4">Add Product</h1>
       <form
         onSubmit={(e) => addProduct(e)}
-        className="flex flex-col items-center justify-center"
+        className="flex flex-col items-center justify-center w-full"
       >
         <input
           onChange={(e) => setProduct({ ...product, name: e.target.value })}
           type="text"
           placeholder="Product Name"
           required
-          className="input input-bordered w-full max-w-xs my-5"
+          className="input input-bordered w-full max-w-md my-5"
         />
 
         <input
           onChange={(e) => setProduct({ ...product, imageUrl: e.target.value })}
           type="url"
-          placeholder="Image URL"
+          placeholder="Image URL (unsplash images)"
           required
-          className="input input-bordered w-full max-w-xs my-5"
+          className="input input-bordered w-full max-w-md my-5"
         />
 
         <input
@@ -77,7 +71,7 @@ export default function AddProduct() {
           type="number"
           placeholder="Price"
           required
-          className="input input-bordered w-full max-w-xs my-5"
+          className="input input-bordered w-full max-w-md my-5"
         />
 
         <textarea

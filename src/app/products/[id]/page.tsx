@@ -1,6 +1,7 @@
 import prisma from "@/lib/db/prisma";
 import { formatPrice } from "@/lib/format";
 import { ProductParams } from "@/types/types";
+import { Metadata } from "next";
 import Image from "next/image";
 import React, { cache } from "react";
 
@@ -11,18 +12,24 @@ const getProduct = cache(async (id: string) => {
       id: id, // or simply id as both variable names match
     },
   });
-
   return product;
 });
 
-export default async function Product({ params: { id } }: ProductParams) {
-  console.log(id);
-  // fetch product with id
+// dynamic metadata
+export async function generateMetadata({
+  params: { id },
+}: ProductParams): Promise<Metadata> {
   const product = await getProduct(id);
 
-  // if (!product) {
-  //   return;
-  // }
+  return {
+    title: product?.name,
+    description: `Product ${product?.name} - E-Commerce`,
+  };
+}
+
+export default async function Product({ params: { id } }: ProductParams) {
+  // fetch product with id
+  const product = await getProduct(id);
 
   return (
     <div className="flex flex-col items-center justify-center mt-10 min-h-screen">
@@ -35,6 +42,7 @@ export default async function Product({ params: { id } }: ProductParams) {
               width={500}
               height={500}
               className="object-contain"
+              priority
             />
           </figure>
           <div className="card-body">
