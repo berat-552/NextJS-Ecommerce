@@ -2,7 +2,12 @@ import Link from "next/link";
 import React from "react";
 import ShoppingCartButton from "./ShoppingCartButton";
 import SearchButton from "./SearchButton";
-export default function Navbar() {
+import ToggleThemeButton from "./ToggleThemeButton";
+import { getCart } from "@/lib/db/cart";
+export default async function Navbar() {
+  const cart = await getCart();
+
+  if (!cart) return;
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start">
@@ -43,7 +48,8 @@ export default function Navbar() {
       </div>
       <div className="navbar-end">
         <SearchButton />
-        <ShoppingCartButton />
+        <ShoppingCartButton size={cart.size} />
+        <ToggleThemeButton />
       </div>
     </div>
   );

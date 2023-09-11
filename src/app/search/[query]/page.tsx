@@ -16,7 +16,7 @@ export async function generateMetadata({
 }
 
 async function getProducts(query: string) {
-  // returns all products that contain the string
+  // returns all products that contain the query string
   const products = await prisma.product.findMany({
     where: {
       OR: [{ name: { contains: query, mode: "insensitive" } }], // case insensitive
@@ -29,11 +29,11 @@ async function getProducts(query: string) {
 export default async function SearchPage({
   params: { query },
 }: SearchProductParams) {
-  // pass query to search
+  // pass query to search products in db
   const products: Product[] = await getProducts(query);
 
   return (
-    <div>
+    <div className="min-h-screen">
       {query && products.length > 0 && (
         <h1 className="mt-4 text-xl sm:text-2xl text-center font-medium">{`Results for "${query}"`}</h1>
       )}
@@ -41,7 +41,7 @@ export default async function SearchPage({
         {products.length > 0 ? (
           products.map((product) => (
             <>
-              <ProductCard product={product} />
+              <ProductCard product={product} key={product.id} />
             </>
           ))
         ) : (

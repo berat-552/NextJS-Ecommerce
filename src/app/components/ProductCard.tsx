@@ -12,7 +12,7 @@ export default function ProductCard({ product }: ProductCardProps) {
   // new if createdAt is less than 7 days old
   const isNew =
     Date.now() - new Date(product.createdAt).getTime() <
-    1000 * 60 * 60 * 24 * 5;
+    1000 * 60 * 60 * 24 * 7;
 
   return (
     <Link

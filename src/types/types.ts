@@ -27,3 +27,8 @@ export interface SearchProductParams {
     query: string;
   };
 }
+
+export interface AddToCartButtonProps {
+  productId: string;
+  incrementProductQuantity: (productId: string) => Promise<void>;
+}

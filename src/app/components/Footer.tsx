@@ -1,9 +1,18 @@
-import React from "react";
-import { AiFillGithub } from "react-icons/ai";
+"use client";
+import React, { useEffect } from "react";
+import { AiFillGithub, AiOutlineArrowUp } from "react-icons/ai";
 export default function Footer() {
-  function year() {
+  function year(): number {
     return new Date().getFullYear();
   }
+
+  function goToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }
+
   return (
     <footer className="footer p-10  bg-neutral text-neutral-content">
       <aside>
@@ -34,6 +43,12 @@ export default function Footer() {
           >
             <AiFillGithub />
           </a>
+          <div className="group flex flex-col items-center" onClick={goToTop}>
+            <AiOutlineArrowUp className="text-2xl hover:scale-110 cursor-pointer transition-all" />
+            <p className="opacity-0 group-hover:opacity-100 transition-all text-xl">
+              Up
+            </p>
+          </div>
         </div>
       </nav>
     </footer>
