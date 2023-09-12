@@ -3,6 +3,7 @@ import Image from "next/image";
 import ProductCard from "./components/ProductCard";
 import PaginationBar from "./components/PaginationBar";
 import { HomeProps } from "@/types/types";
+import FilterElement from "./components/FilterElement";
 
 export default async function Home({
   searchParams: { page = "1" },
@@ -31,6 +32,9 @@ export default async function Home({
 
   return (
     <>
+      <div className="flex items-center justify-end mt-5 mr-14">
+        <FilterElement products={products} />
+      </div>
       <div className="m-10 flex items-center justify-center flex-wrap">
         {!isEmpty ? (
           products.map((product) => (

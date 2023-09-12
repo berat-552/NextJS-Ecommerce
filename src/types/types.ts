@@ -32,3 +32,20 @@ export interface AddToCartButtonProps {
   productId: string;
   incrementProductQuantity: (productId: string) => Promise<void>;
 }
+
+export interface ShoppingCartProps {
+  size?: number;
+}
+
+export interface FilterElementProps {
+  products: Product[];
+}
+
+export interface FilteredPageProps {
+  params: {
+    filterOption: string;
+  };
+  searchParams: {
+    page: string;
+  };
+}

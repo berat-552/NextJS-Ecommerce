@@ -7,7 +7,6 @@ import { getCart } from "@/lib/db/cart";
 export default async function Navbar() {
   const cart = await getCart();
 
-  if (!cart) return;
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start">
@@ -48,7 +47,11 @@ export default async function Navbar() {
       </div>
       <div className="navbar-end">
         <SearchButton />
-        <ShoppingCartButton size={cart.size} />
+        {cart ? (
+          <ShoppingCartButton size={cart.size} />
+        ) : (
+          <ShoppingCartButton />
+        )}
         <ToggleThemeButton />
       </div>
     </div>

@@ -21,15 +21,19 @@ export default function CartItem({
   const quantityOptions: React.JSX.Element[] = [];
 
   for (let i = 1; i <= 99; i++) {
-    quantityOptions.push(<option value={i}>{i}</option>);
+    quantityOptions.push(
+      <option key={i} value={i}>
+        {i}
+      </option>
+    );
   }
 
   return (
     <>
-      <div className="flex flex-row items-start justify-center">
+      <div className="flex flex-row items-start justify-center mx-4">
         <Link
           href={`/products/${product.id}`}
-          className="card card-compact  bg-base-100 hover:shadow-xl transition-shadow max-w-sm mx-2 my-2 duration-300"
+          className="card card-compact  bg-base-100 hover:shadow-xl transition-shadow max-w-sm sm:sm:max-w-md md:max-w-lg mx-2 my-2 duration-300"
         >
           <figure>
             <Image
@@ -37,7 +41,7 @@ export default function CartItem({
               alt={product.name}
               width={800}
               height={400}
-              className="object-cover h-48 rounded-xl"
+              className="object-cover max-w-xs sm:max-w-sm md:max-w-md w-full rounded-xl"
               priority
             />
           </figure>
@@ -46,7 +50,7 @@ export default function CartItem({
           <h2 className="card-title">{product.name}</h2>
 
           <div className="flex items-center justify-between">
-            <p>Total: {formatPrice(product.price)}</p>
+            <p>Price: {formatPrice(product.price * quantity)}</p>
             {isPending && (
               <span className="loading loading-spinner loading-sm ml-2"></span>
             )}
@@ -70,7 +74,7 @@ export default function CartItem({
           </select>
         </div>
       </div>
-      <div className="m-2 h-1 bg-base-300 rounded-full" />
+      <div className="m-2 h-1 bg-base-300 rounded-full w-full" />
     </>
   );
 }

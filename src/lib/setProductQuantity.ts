@@ -12,6 +12,7 @@ export async function setProductQuantity(productId: string, quantity: number) {
     return item.productId === productId;
   });
 
+  // delete product from cart if quantity is changed to 0
   if (quantity === 0) {
     if (articleInCart) {
       await prisma.cartItem.delete({
@@ -21,6 +22,7 @@ export async function setProductQuantity(productId: string, quantity: number) {
       });
     }
   } else {
+    // otherwise update quantity if it exists
     if (articleInCart) {
       await prisma.cartItem.update({
         where: {
@@ -31,6 +33,7 @@ export async function setProductQuantity(productId: string, quantity: number) {
         },
       });
     } else {
+      // or create a new entry
       await prisma.cartItem.create({
         data: {
           cartId: cart.id,

@@ -11,6 +11,7 @@ export async function incrementProductQuantity(productId: string) {
     cart = await createCart();
   }
 
+  // existing product
   const articleInCart = cart.items.find((item) => {
     return item.productId === productId;
   });
