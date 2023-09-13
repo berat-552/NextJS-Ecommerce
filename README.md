@@ -1,4 +1,4 @@
-Features of this project
+**Features of this project**
 
 Searching, filtering, adding to cart products.
 
