@@ -10,6 +10,7 @@ export default function AddToCartButton({
   // add to cart loading state
   const [loading, setLoading] = useState(false);
 
+  // success state
   const [success, setSuccess] = useState(false);
 
   async function addToCart() {

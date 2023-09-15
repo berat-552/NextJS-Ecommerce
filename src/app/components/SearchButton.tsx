@@ -13,15 +13,6 @@ export default function SearchButton() {
       {showSearchBar && (
         <div className="form-control">
           <div className="flex items-center justify-center">
-            {/* <button
-                className="text-xl hover:text-white mx-2"
-                onClick={() => {
-                  setShowSearchBar(false);
-                  setSearchQuery("");
-                }}
-              >
-                <AiOutlineClose />
-              </button> */}
             <input
               onChange={(e) => setSearchQuery(e.target.value)}
               type="text"
@@ -33,7 +24,10 @@ export default function SearchButton() {
               href={`/search/${searchQuery}`}
               type="submit"
               className="text-2xl mx-4"
-              onClick={() => setShowSearchBar(false)}
+              onClick={() => {
+                setShowSearchBar(false);
+                setSearchQuery("");
+              }}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"

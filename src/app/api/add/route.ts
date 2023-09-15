@@ -18,8 +18,6 @@ export async function POST(request: Request) {
     data: data,
   });
 
-  revalidatePath("/");
-
   return NextResponse.json({
     message: "product created",
     status: 200,

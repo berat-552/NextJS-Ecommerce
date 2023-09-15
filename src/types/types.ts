@@ -49,3 +49,22 @@ export interface FilteredPageProps {
     page: string;
   };
 }
+
+export interface Review {
+  rating: number;
+  message: string;
+  name: string;
+}
+
+export interface ReviewFormProps {
+  productId: string;
+}
+
+export interface ProductReview {
+  review: {
+    message: string;
+    name: string;
+    rating: number;
+    productId: string | null;
+  };
+}

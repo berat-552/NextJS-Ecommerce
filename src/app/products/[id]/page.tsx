@@ -8,6 +8,8 @@ import Link from "next/link";
 import React, { cache } from "react";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import { incrementProductQuantity } from "@/lib/incrementProductQuantity";
+import ReviewForm from "@/app/components/ReviewForm";
+import Reviews from "@/app/components/Reviews";
 // cache data
 const getProduct = cache(async (id: string) => {
   const product = await prisma.product.findUnique({
@@ -47,17 +49,18 @@ export default async function Product({ params: { id } }: ProductParams) {
       </Link>
       <div className="flex flex-col items-center justify-center min-h-screen">
         {product && (
-          <div className="max-w-xs card sm:max-w-full bg-base-100 shadow-xl">
+          <div className="max-w-sm card sm:max-w-full bg-base-100">
             <figure>
               <Image
                 src={product.imageUrl}
                 alt={product.name}
                 width={500}
                 height={500}
-                className="object-contain"
+                className="object-contain w-auto h-auto rounded-xl"
                 priority
               />
             </figure>
+
             <div className="card-body">
               <h2 className="card-title">{product.name}</h2>
               <p>{product.description}</p>
@@ -72,6 +75,10 @@ export default async function Product({ params: { id } }: ProductParams) {
           </div>
         )}
       </div>
+      <Reviews productId={id} />
+      <div className="h-1 w-full bg-primary" />
+
+      <ReviewForm productId={id} />
     </>
   );
 }

@@ -43,8 +43,11 @@ export default function Footer() {
           >
             <AiFillGithub />
           </a>
-          <div className="group flex flex-col items-center" onClick={goToTop}>
-            <AiOutlineArrowUp className="text-2xl hover:scale-110 cursor-pointer transition-all" />
+          <div
+            className="group flex flex-col items-center cursor-pointer"
+            onClick={goToTop}
+          >
+            <AiOutlineArrowUp className="text-2xl hover:scale-110  transition-all" />
             <p className="opacity-0 group-hover:opacity-100 transition-all text-xl">
               Up
             </p>

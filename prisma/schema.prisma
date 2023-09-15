@@ -17,7 +17,22 @@ model Product {
   updatedAt   DateTime   @updatedAt
   CartItem    CartItem[]
 
+  // relation to Reviews
+  reviews Review[] // one-to-many relation
+
   @@map("products")
+}
+
+model Review {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  message   String
+  name      String
+  rating    Int
+  // relation to Product
+  Product   Product? @relation(fields: [productId], references: [id])
+  productId String?  @db.ObjectId
+
+  @@map("reviews")
 }
 
 model Cart {

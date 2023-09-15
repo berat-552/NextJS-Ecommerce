@@ -18,7 +18,7 @@ export default async function CartPage() {
       <h1 className="text-md sm:text-xl md:text-2xl text-center mt-5">
         Shopping Cart
       </h1>
-      <div className="flex flex-col items-start justify-center my-4">
+      <div className="flex flex-col items-start md:items-center justify-center my-4">
         <div>
           {cart &&
             cart.items.length > 0 &&
