@@ -8,7 +8,7 @@ export default async function NotFound() {
         404 Not Found
       </h1>
       <p className="text-md">Please try again.</p>
-      <Link href={"/"} className="font-medium hover:underline text-xl">
+      <Link href={"/"} className="font-medium text-xl btn btn-primary">
         Return Home
       </Link>
     </div>

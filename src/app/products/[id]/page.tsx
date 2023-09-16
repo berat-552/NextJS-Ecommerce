@@ -10,13 +10,20 @@ import { AiOutlineArrowLeft } from "react-icons/ai";
 import { incrementProductQuantity } from "@/lib/incrementProductQuantity";
 import ReviewForm from "@/app/components/ReviewForm";
 import Reviews from "@/app/components/Reviews";
+import { notFound } from "next/navigation";
 // cache data
 const getProduct = cache(async (id: string) => {
+  // Check if the ID has at least 12 characters (bytes)
+  if (id.length < 24) {
+    notFound();
+  }
+
   const product = await prisma.product.findUnique({
     where: {
       id: id, // or simply id as both variable names match
     },
   });
+
   return product;
 });
 
@@ -25,6 +32,10 @@ export async function generateMetadata({
   params: { id },
 }: ProductParams): Promise<Metadata> {
   const product = await getProduct(id);
+  // Check if the ID has at least 12 characters (bytes)
+  if (id.length < 24) {
+    notFound();
+  }
 
   return {
     title: product?.name,
@@ -33,6 +44,10 @@ export async function generateMetadata({
 }
 
 export default async function Product({ params: { id } }: ProductParams) {
+  if (id.length !== 24) {
+    notFound();
+  }
+
   // fetch product with id
   const product = await getProduct(id);
 
