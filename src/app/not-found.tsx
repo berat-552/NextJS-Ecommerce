@@ -10,12 +10,13 @@ export default function NotFound() {
         404 Not Found
       </h1>
       <p className="text-md">Please try again.</p>
-      <button
+      <Link
+        href={".."}
         onClick={() => router.refresh()}
         className="font-medium text-xl btn btn-primary"
       >
         Return Home
-      </button>
+      </Link>
     </div>
   );
 }
