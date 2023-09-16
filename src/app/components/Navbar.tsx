@@ -34,9 +34,9 @@ export default async function Navbar() {
             <li>
               <Link href={"/"}>Home</Link>
             </li>
-            <li>
+            {/* <li>
               <Link href={"/add-product"}>Add Product</Link>
-            </li>
+            </li> */}
           </ul>
         </div>
       </div>

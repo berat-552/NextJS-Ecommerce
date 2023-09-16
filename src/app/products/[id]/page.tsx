@@ -61,7 +61,7 @@ export default async function Product({ params: { id } }: ProductParams) {
               />
             </figure>
 
-            <div className="card-body">
+            <div className="card-body max-w-2xl">
               <h2 className="card-title">{product.name}</h2>
               <p>{product.description}</p>
               <p>{formatPrice(product.price)}</p>

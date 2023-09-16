@@ -5,6 +5,8 @@ import PaginationBar from "./components/PaginationBar";
 import { HomeProps } from "@/types/types";
 import FilterElement from "./components/FilterElement";
 
+export const revalidate = 0;
+
 export default async function Home({
   searchParams: { page = "1" },
 }: HomeProps) {
@@ -12,7 +14,7 @@ export default async function Home({
   const currentPage = parseInt(page);
 
   // max products per page
-  const pageSize = 6;
+  const pageSize = 8;
 
   // total number of products in database
   const totalItemCount = await prisma.product.count();
