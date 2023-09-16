@@ -31,7 +31,7 @@ export default async function FilteredPage({
           <FilterElement products={products} />
         </div>
 
-        <div className="font-medium">
+        <div className="font-medium mt-4">
           {filterOption === "LOW_TO_HIGH" ? (
             <h1 className="text-center text-xl">Price : Low to High</h1>
           ) : filterOption === "HIGH_TO_LOW" ? (
@@ -43,7 +43,7 @@ export default async function FilteredPage({
           )}
         </div>
 
-        <div className="m-10 flex items-center justify-center flex-wrap">
+        <div className="m-8 flex items-center justify-center flex-wrap">
           {products.length > 0 ? (
             products.map((product) => (
               <ProductCard product={product} key={product.id} />
