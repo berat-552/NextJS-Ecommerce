@@ -14,7 +14,7 @@ import { notFound } from "next/navigation";
 // cache data
 const getProduct = cache(async (id: string) => {
   // Check if the ID has at least 12 characters (bytes)
-  if (id.length < 24) {
+  if (id.length !== 24) {
     notFound();
   }
 
@@ -33,7 +33,7 @@ export async function generateMetadata({
 }: ProductParams): Promise<Metadata> {
   const product = await getProduct(id);
   // Check if the ID has at least 12 characters (bytes)
-  if (id.length < 24) {
+  if (id.length !== 24) {
     notFound();
   }
 
