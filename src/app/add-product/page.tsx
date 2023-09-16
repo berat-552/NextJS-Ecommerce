@@ -1,15 +1,9 @@
 "use client";
 
 import { Product } from "@/types/types";
-import { revalidatePath } from "next/cache";
+
 import React, { FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
-import { redirect } from "next/navigation";
-import { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "Add Product",
-};
 
 export default function AddProduct() {
   const [product, setProduct] = useState<Product>({
