@@ -1,7 +1,6 @@
 import prisma from "@/lib/db/prisma";
 import { Review } from "@prisma/client";
 
-import { revalidatePath } from "next/cache";
 import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
@@ -15,7 +14,7 @@ export async function POST(request: Request) {
     });
   }
 
-  // create new review in database
+  // create new review in database for the specific product
   await prisma.review.create({
     data: {
       rating: review.rating,

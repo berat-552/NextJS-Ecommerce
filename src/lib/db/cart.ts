@@ -28,6 +28,7 @@ export async function getCart(): Promise<ShoppingCart | null> {
     return null;
   }
 
+  // return cart along with other properties
   return {
     ...cart,
     size: cart.items.reduce((acc, item) => acc + item.quantity, 0),
@@ -46,6 +47,7 @@ export async function createCart(): Promise<ShoppingCart> {
   // store cart id in cookies
   cookies().set("localCartId", newCart.id);
 
+  // fresh cart
   return {
     ...newCart,
     items: [],

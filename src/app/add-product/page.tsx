@@ -17,6 +17,7 @@ export default function AddProduct() {
   async function addProduct(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
+    // destructure
     const { name, description, imageUrl, price } = product;
 
     const response = await fetch("/api/add", {

@@ -1,6 +1,5 @@
 "use client";
-import React, { useEffect, useState, FormEvent } from "react";
-import { AiOutlineClose, AiOutlineCheck } from "react-icons/ai";
+import React, { useState } from "react";
 import Link from "next/link";
 export default function SearchButton() {
   // toggle state

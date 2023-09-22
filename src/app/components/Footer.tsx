@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React from "react";
 import { AiFillGithub, AiOutlineArrowUp } from "react-icons/ai";
 export default function Footer() {
   function year(): number {

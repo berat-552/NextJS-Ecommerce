@@ -1,6 +1,6 @@
 "use client";
 import { Review, ReviewFormProps } from "@/types/types";
-import React, { useState, useEffect, FormEvent } from "react";
+import React, { useState, FormEvent } from "react";
 import { AiOutlineCheck } from "react-icons/ai";
 import { useRouter } from "next/navigation";
 export default function ReviewForm({ productId }: ReviewFormProps) {

@@ -26,33 +26,31 @@ export default async function FilteredPage({
 
   return (
     <div>
-      <>
-        <div className="flex items-center justify-end mt-5 mr-14">
-          <FilterElement products={products} />
-        </div>
+      <div className="flex items-center justify-end mt-5 mr-14">
+        <FilterElement products={products} />
+      </div>
 
-        <div className="font-medium mt-4">
-          {filterOption === "LOW_TO_HIGH" ? (
-            <h1 className="text-center text-xl">Price : Low to High</h1>
-          ) : filterOption === "HIGH_TO_LOW" ? (
-            <h1 className="text-center text-xl">Price : High to Low</h1>
-          ) : filterOption === "NEW" ? (
-            <h1 className="text-center text-xl">Newest Products</h1>
-          ) : (
-            <h1 className="text-center text-xl">Oldest Products</h1>
-          )}
-        </div>
+      <div className="font-medium mt-4">
+        {filterOption === "LOW_TO_HIGH" ? (
+          <h1 className="text-center text-xl">Price : Low to High</h1>
+        ) : filterOption === "HIGH_TO_LOW" ? (
+          <h1 className="text-center text-xl">Price : High to Low</h1>
+        ) : filterOption === "NEW" ? (
+          <h1 className="text-center text-xl">Newest Products</h1>
+        ) : (
+          <h1 className="text-center text-xl">Oldest Products</h1>
+        )}
+      </div>
 
-        <div className="m-8 flex items-center justify-center flex-wrap">
-          {products.length > 0 ? (
-            products.map((product) => (
-              <ProductCard product={product} key={product.id} />
-            ))
-          ) : (
-            <p>No products</p>
-          )}
-        </div>
-      </>
+      <div className="m-8 flex items-center justify-center flex-wrap">
+        {products.length > 0 ? (
+          products.map((product) => (
+            <ProductCard product={product} key={product.id} />
+          ))
+        ) : (
+          <p>No products</p>
+        )}
+      </div>
     </div>
   );
 }

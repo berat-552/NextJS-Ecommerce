@@ -20,18 +20,18 @@ export default function AddToCartButton({
 
     setSuccess(false);
 
+    // important
     incrementProductQuantity(productId);
 
     setTimeout(() => {
       setLoading(false);
+      setSuccess(true);
     }, 1250);
-
-    setSuccess(true);
   }
 
   return (
     <div className="flex items-center gap-2">
-      <button className="btn btn-primary" onClick={() => addToCart()}>
+      <button className="btn btn-primary" onClick={addToCart}>
         Add To Cart
         <AiOutlineShoppingCart className="text-xl" />
         {loading ? (

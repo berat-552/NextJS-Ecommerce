@@ -1,6 +1,5 @@
 "use client";
 import { FilterElementProps } from "@/types/types";
-import { redirect } from "next/navigation";
 import React, { ChangeEvent } from "react";
 import { useRouter } from "next/navigation";
 export default function FilterElement({ products }: FilterElementProps) {
