@@ -51,6 +51,21 @@ export default async function Product({ params: { id } }: ProductParams) {
   // fetch product with id
   const product = await getProduct(id);
 
+  let posted;
+
+  if (product) {
+    const currentDate = new Date();
+    const createdAtDate = new Date(product.createdAt);
+
+    // Convert dates to timestamps (milliseconds since the Unix epoch)
+    const currentTime = currentDate.getTime();
+    const createdAtTime = createdAtDate.getTime();
+
+    // Calculate the difference in milliseconds and then convert to days
+    const millisecondsDifference = currentTime - createdAtTime;
+    posted = Math.floor(millisecondsDifference / (1000 * 60 * 60 * 24));
+  }
+
   return (
     <>
       <Link
@@ -62,6 +77,7 @@ export default async function Product({ params: { id } }: ProductParams) {
           Back
         </p>
       </Link>
+
       <div className="flex flex-col items-center justify-center min-h-screen">
         {product && (
           <div className="max-w-sm card sm:max-w-full bg-base-100">
@@ -80,6 +96,9 @@ export default async function Product({ params: { id } }: ProductParams) {
               <h2 className="card-title">{product.name}</h2>
               <p>{product.description}</p>
               <p>{formatPrice(product.price)}</p>
+              <p>
+                Posted: <span>{posted} day(s) ago</span>
+              </p>
               <div className="card-actions justify-end">
                 <AddToCartButton
                   productId={product.id}
@@ -92,7 +111,6 @@ export default async function Product({ params: { id } }: ProductParams) {
       </div>
       <Reviews productId={id} />
       <div className="h-1 w-full bg-primary" />
-
       <ReviewForm productId={id} />
     </>
   );
