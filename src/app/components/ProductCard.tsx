@@ -1,3 +1,4 @@
+import { fetchReviews } from "@/lib/fetchReviews";
 import { formatPrice } from "@/lib/format";
 import { Product } from "@prisma/client";
 import Image from "next/image";
@@ -8,11 +9,35 @@ export interface ProductCardProps {
   product: Product;
 }
 
-export default function ProductCard({ product }: ProductCardProps) {
+export default async function ProductCard({ product }: ProductCardProps) {
   // new if createdAt is less than 7 days old
   const isNew =
     Date.now() - new Date(product.createdAt).getTime() <
     1000 * 60 * 60 * 24 * 7;
+
+  // reviews for that specific product
+  const reviews = await fetchReviews(product.id);
+
+  // calculates total number of reviews for each product
+  const totalReviews = reviews.reduce((count, review) => {
+    return count + 1;
+  }, 0);
+
+  function averageReviews() {
+    if (totalReviews === 0) {
+      return 0; // Return 0 if there are no reviews
+    }
+
+    let totalRatings = 0;
+
+    for (let i = 0; i < reviews.length; i++) {
+      // append all the reviews' rating property
+      totalRatings += reviews[i].rating;
+    }
+
+    // divide ratings by number of reviews
+    return totalRatings / totalReviews;
+  }
 
   return (
     <Link
@@ -31,8 +56,16 @@ export default function ProductCard({ product }: ProductCardProps) {
       </figure>
       <div className="card-body">
         <h2 className="card-title">{product.name}</h2>
-        {isNew && <div className="badge badge-secondary">NEW</div>}
+        <div className="text-md flex items-center ">
+          <span>{averageReviews()}/5 </span>
+          <input
+            type="radio"
+            name="rating-2"
+            className="mask mask-star-2 bg-orange-400 m-1 w-5 h-5"
+          />
+        </div>
 
+        {isNew && <div className="badge badge-secondary">NEW</div>}
         <p>{formatPrice(product.price)}</p>
       </div>
     </Link>

@@ -1,18 +1,7 @@
-import prisma from "@/lib/db/prisma";
 import { ReviewFormProps } from "@/types/types";
 import React from "react";
 import Review from "./Review";
-
-async function fetchReviews(id: string) {
-  // get all reviews that match the productId
-  const reviews = await prisma.review.findMany({
-    where: {
-      productId: id,
-    },
-  });
-
-  return reviews;
-}
+import { fetchReviews } from "@/lib/fetchReviews";
 
 export default async function Reviews({ productId }: ReviewFormProps) {
   const reviews = await fetchReviews(productId);
