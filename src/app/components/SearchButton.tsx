@@ -16,7 +16,7 @@ export default function SearchButton() {
               onChange={(e) => setSearchQuery(e.target.value)}
               type="text"
               placeholder="Search"
-              className={`input relatve input-bordered w-24 md:w-auto `}
+              className={`input relative input-bordered w-[11rem] md:w-auto`}
             />
 
             <Link

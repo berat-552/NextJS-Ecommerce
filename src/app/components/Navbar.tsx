@@ -41,7 +41,10 @@ export default async function Navbar() {
         </div>
       </div>
       <div className="navbar-center">
-        <Link href={"/"} className="btn btn-ghost normal-case text-xl">
+        <Link
+          href={"/"}
+          className="btn btn-ghost normal-case text-lg sm:text-xl hidden sm:flex"
+        >
           E-Commerce
         </Link>
       </div>

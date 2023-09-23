@@ -1,5 +1,4 @@
 import prisma from "@/lib/db/prisma";
-import Image from "next/image";
 import ProductCard from "./components/ProductCard";
 import PaginationBar from "./components/PaginationBar";
 import { HomeProps } from "@/types/types";
