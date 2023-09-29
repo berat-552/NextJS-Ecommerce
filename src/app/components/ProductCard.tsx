@@ -23,7 +23,7 @@ export default async function ProductCard({ product }: ProductCardProps) {
     return count + 1;
   }, 0);
 
-  function averageReviews() {
+  function averageReviews(): number {
     if (totalReviews === 0) {
       return 0; // Return 0 if there are no reviews
     }

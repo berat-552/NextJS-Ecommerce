@@ -15,7 +15,7 @@ export async function generateMetadata({
   };
 }
 
-async function getProducts(query: string) {
+async function getProducts(query: string): Promise<Product[]> {
   // returns all products that contain the query string
   const products = await prisma.product.findMany({
     where: {

@@ -3,7 +3,9 @@ import { revalidatePath } from "next/cache";
 import { createCart, getCart } from "./db/cart";
 import prisma from "./db/prisma";
 
-export async function incrementProductQuantity(productId: string) {
+export async function incrementProductQuantity(
+  productId: string
+): Promise<void> {
   // either fetch existing cart or create new cart
   let cart = await getCart();
 

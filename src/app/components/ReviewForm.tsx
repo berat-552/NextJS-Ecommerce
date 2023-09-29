@@ -23,7 +23,7 @@ export default function ReviewForm({ productId }: ReviewFormProps) {
     setReview({ ...review, rating: value });
   }
 
-  async function submitReview(e: FormEvent<HTMLFormElement>) {
+  async function submitReview(e: FormEvent<HTMLFormElement>): Promise<void> {
     e.preventDefault();
 
     // initially false

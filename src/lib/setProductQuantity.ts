@@ -4,7 +4,10 @@ import { revalidatePath } from "next/cache";
 import { createCart, getCart } from "./db/cart";
 import prisma from "./db/prisma";
 
-export async function setProductQuantity(productId: string, quantity: number) {
+export async function setProductQuantity(
+  productId: string,
+  quantity: number
+): Promise<void> {
   // get existing cart or create new
   const cart = (await getCart()) ?? (await createCart());
 

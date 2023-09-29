@@ -10,7 +10,7 @@ export async function POST(request: Request) {
   if (!review) {
     return NextResponse.json({
       message: "Review data is missing or invalid",
-      status: 404,
+      status: 400,
     });
   }
 
