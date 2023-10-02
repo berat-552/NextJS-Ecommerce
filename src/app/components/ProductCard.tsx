@@ -4,6 +4,7 @@ import { Product } from "@prisma/client";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { AiFillStar } from "react-icons/ai";
 
 export interface ProductCardProps {
   product: Product;
@@ -56,13 +57,9 @@ export default async function ProductCard({ product }: ProductCardProps) {
       </figure>
       <div className="card-body">
         <h2 className="card-title">{product.name}</h2>
-        <div className="text-md flex items-center ">
+        <div className="text-md flex items-center text-lg">
           <span>{averageReviews().toFixed(1)}/5 </span>
-          <input
-            type="radio"
-            name="rating-2"
-            className="mask mask-star-2 bg-orange-400 m-1 w-5 h-5"
-          />
+          <AiFillStar className="ml-1 text-xl" />
         </div>
 
         {isNew && <div className="badge badge-secondary">NEW</div>}
