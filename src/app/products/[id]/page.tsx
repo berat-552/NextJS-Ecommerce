@@ -51,7 +51,7 @@ export default async function Product({ params: { id } }: ProductParams) {
   // fetch product with id
   const product = await getProduct(id);
 
-  let posted;
+  let posted: number = 0;
 
   if (product) {
     const currentDate = new Date();

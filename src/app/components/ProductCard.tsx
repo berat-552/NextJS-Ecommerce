@@ -57,7 +57,7 @@ export default async function ProductCard({ product }: ProductCardProps) {
       <div className="card-body">
         <h2 className="card-title">{product.name}</h2>
         <div className="text-md flex items-center ">
-          <span>{averageReviews()}/5 </span>
+          <span>{averageReviews().toFixed(1)}/5 </span>
           <input
             type="radio"
             name="rating-2"
