@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { AiFillStar } from "react-icons/ai";
-
+import { BsStarHalf } from "react-icons/bs";
 export interface ProductCardProps {
   product: Product;
 }
@@ -40,6 +40,29 @@ export default async function ProductCard({ product }: ProductCardProps) {
     return totalRatings / totalReviews;
   }
 
+  const avgReview = averageReviews();
+
+  function generateStars() {
+    let stars: React.JSX.Element[] = [];
+
+    // round down integer
+    const numFullStars = Math.floor(avgReview);
+
+    if (avgReview < 1) return stars;
+
+    // dynamically add number of stars
+    for (let i = 0; i < numFullStars; i++) {
+      stars.push(<AiFillStar className="ml-1 text-xl text-yellow-500" />);
+    }
+
+    // condition to add half star
+    if (avgReview - numFullStars >= 0.5) {
+      stars.push(<BsStarHalf className="ml-1 text-yellow-500" />);
+    }
+
+    return stars;
+  }
+
   return (
     <Link
       href={`/products/${product.id}`}
@@ -58,8 +81,8 @@ export default async function ProductCard({ product }: ProductCardProps) {
       <div className="card-body">
         <h2 className="card-title">{product.name}</h2>
         <div className="text-md flex items-center text-lg">
-          <span>{averageReviews().toFixed(1)}/5 </span>
-          <AiFillStar className="ml-1 text-xl" />
+          <span>{avgReview >= 1 ? avgReview.toFixed(1) : 0}/5</span>
+          <div className="flex">{generateStars()}</div>
         </div>
 
         {isNew && <div className="badge badge-secondary">NEW</div>}
