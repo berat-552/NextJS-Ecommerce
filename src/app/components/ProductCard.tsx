@@ -6,6 +6,7 @@ import Link from "next/link";
 import React from "react";
 import { AiFillStar } from "react-icons/ai";
 import { BsStarHalf } from "react-icons/bs";
+
 export interface ProductCardProps {
   product: Product;
 }
@@ -52,12 +53,19 @@ export default async function ProductCard({ product }: ProductCardProps) {
 
     // dynamically add number of stars
     for (let i = 0; i < numFullStars; i++) {
-      stars.push(<AiFillStar className="ml-1 text-xl text-yellow-500" />);
+      stars.push(
+        <AiFillStar key={i} className="ml-1 text-xl text-yellow-500" />
+      );
     }
 
     // condition to add half star
-    if (avgReview - numFullStars >= 0.5) {
-      stars.push(<BsStarHalf className="ml-1 text-yellow-500" />);
+    if (avgReview - numFullStars >= 0.4) {
+      stars.push(
+        <BsStarHalf
+          key={Math.floor(Math.random() * 9999)}
+          className="ml-1 text-yellow-500"
+        />
+      );
     }
 
     return stars;

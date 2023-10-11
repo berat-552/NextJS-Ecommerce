@@ -22,7 +22,6 @@ export default async function CartPage() {
         <div>
           {cart &&
             cart.items.length > 0 &&
-            cart.items.length > 0 &&
             cart.items.map((item) => (
               <CartItem
                 setProductQuantity={setProductQuantity}

@@ -5,20 +5,26 @@ import { FilteredPageProps } from "@/types/types";
 
 import React from "react";
 
+//  [key: string] - the keys are of type string
+// { [key: string]: string }: This is specifying that the values associated with the keys in the object are themselves objects. These objects have keys of type string and values of type string
+interface FilterOption {
+  [key: string]: {
+    [key: string]: string;
+  };
+}
+
+const filterOptions: FilterOption = {
+  LOW_TO_HIGH: { price: "asc" },
+  HIGH_TO_LOW: { price: "desc" },
+  NEW: { createdAt: "desc" },
+  OLD: { createdAt: "asc" },
+};
+
 export default async function FilteredPage({
   params: { filterOption },
 }: FilteredPageProps) {
-  let orderByOption = {};
-
-  if (filterOption === "LOW_TO_HIGH") {
-    orderByOption = { price: "asc" };
-  } else if (filterOption === "HIGH_TO_LOW") {
-    orderByOption = { price: "desc" };
-  } else if (filterOption === "NEW") {
-    orderByOption = { createdAt: "desc" };
-  } else if (filterOption === "OLD") {
-    orderByOption = { createdAt: "asc" };
-  }
+  // access filter if the prop matches any of the filter options, else return empty object
+  const orderByOption = filterOptions[filterOption] || {};
 
   const products = await prisma.product.findMany({
     orderBy: orderByOption,
