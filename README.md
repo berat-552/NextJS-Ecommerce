@@ -1,6 +1,6 @@
-**Features of this project**
+# Features of this project
 
-Searching, filtering, adding to cart products.
+_Searching, filtering, adding products to cart, leaving reviews, and dynamic rendering._
 
 This is a web application built with:
 
@@ -10,3 +10,4 @@ TailwindCSS,
 MongoDB,
 Prisma
 
+**By Berat Dilki**
