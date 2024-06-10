@@ -10,4 +10,3 @@ TailwindCSS,
 MongoDB,
 Prisma
 
-**By Berat Dilki**
